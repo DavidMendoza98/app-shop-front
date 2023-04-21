@@ -18,7 +18,7 @@ header::after {
     left: 0;
     width: 100%;
     height: 5px;
-    background-color: orange; /* Cambia el color a tu gusto */
+    background-color: rgb(255, 255, 255); /* Cambia el color a tu gusto */
   }
 .logotipo{
     grid-area: 1 / 3 / 2 / 10;
