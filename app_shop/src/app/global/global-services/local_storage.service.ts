@@ -11,10 +11,8 @@ export class Storage{
     create_storage(name_data:string, content_data:string){
         const key = environment.key;
         const data = CryptoJS.AES.encrypt(content_data, key).toString();
-        localStorage.setItem(name_data,data);
-    }
-    update_storage(name_data:string, content_data:string){
-        localStorage.setItem(name_data,content_data);
+        const name = CryptoJS.AES.encrypt(content_data, name_data).toString();
+        localStorage.setItem(name,data);
     }
     get_storage(name_data:string){
         const key = environment.key;
@@ -31,7 +29,9 @@ export class Storage{
         
      }
     delete_storage(name_data:string){
-        localStorage.removeItem(name_data)
+        const key = environment.key;
+        const data = CryptoJS.AES.encrypt(name_data, key).toString();
+        localStorage.removeItem(data)
     }
     
 }
