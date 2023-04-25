@@ -1,84 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500');
+*{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+body{
+  font-family: montserrat;
+}
+nav{
+  background: #FF8C22;;
+  height: 65px;
+  width: 100%;
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .titulo{
+    font-size: 28px;
+    color: white;
+}
+
 body {
-    background-color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  margin-top: -22px;
+}
+.sidebar {
+  position: fixed;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: #FF8C22;
+  transition: all .5s ease;
+  /* margin-top: 20px; */
+}
+.sidebar header {
+  color: white;
+  font-size: 35px;
+  line-height: 65px;
+  text-align: center;
+  background: #FF8C22;;
+  user-select: none;
+  font-weight: bold;
+}
+.sidebar ul a{
+  display: block;
+  height: 100%;
+  width: 100%;
+  line-height: 65px;
+  font-size: 20px;
+  color: white;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  transition: .4s;
+}
+ul li:hover a{
+  padding-right: 50px;
+  cursor: pointer;
+}
+.sidebar ul a i{
+  margin-right: 16px;
+}
+#check{
+  display: none;
+}
+label #btn,label #cancel{
+  position: fixed;
+  background: #FF8C22;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1111;
+}
+label #btn{
+  right: 20px;
+  top: 8px;
+  font-size: 35px;
+  color: white;
+  padding: 6px 12px;
+  transition: all .5s;
 }
 
-.card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    display: inline-block;
-    margin: 10px;
-    width: 500px;
+label #cancel{
+  z-index: 1111;
+  right: -40px;
+  top: 20px;
+  font-size: 30px;
+  color: white;
+  padding: 4px 9px;
+  transition: all .5s ease;
+}
+#check:checked ~ .sidebar{
+  right: 0;
+}
+#check:checked ~ label #btn{
+  right: 80px;
+  opacity: 0;
+  pointer-events: none;
+}
+#check:checked ~ label #cancel{
+   right: 18px;
+}
+#check:checked ~ section{
+  margin-right: 0px;
 }
 
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+#check:checked ~ section label.logo{
+  position: relative;
+  transition: all .8s;
 }
 
-.menu {
+
+section{
+  transition: all .8s;
+}
+
+/*/////////////////////// aqui termina el sidbar ////////////////////////////////////*/
+
+.contenido{
+    color: #000;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 20px;
-}
-
-.search-container {
-    display: flex;
     justify-content: center;
-    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
 }
 
-.search-box {
+.contenedor{
     display: flex;
     align-items: center;
-    padding: 10px;
-    width: 80%;
+    justify-content: center;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    width: 400px;
+
 }
 
-.search-box input[type=text] {
-    padding: 10px;
+.msj{
+    font-size: 15px;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+form .form-control{
+    border-radius: 18px;
+}
+
+
+form .boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido input{
+    width: 300px;
+    box-shadow: none;
+}
+
+.button {
+    backface-visibility: hidden;
+  /* position: relative; */
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #fa1;
+  border-radius: 100px;
+  border: 0px solid #444;
+  border-width: 0px 0px 0px 0px;
+  padding: 10px 13px 10px 13px;
+    color: #000;
+  font-size: 16px;
+  font-family: Helvetica Neue;
+  font-weight: 900;
+  font-style: normal;
+  }
+
+
+  .button button{
+    background: transparent;
     border: none;
-    font-size: 16px;
-    width: 80%;
+  }
+
+  .button > button {
+    color: #000;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: initial;
+  font-style: normal;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+  margin-left: -2px;
+  margin-top: -4px;
+  cursor: pointer;
+  }
+
+  .button > svg {
+    color: #fff;
+  font-size: 1em;
+  border-radius: 0px;
+  border: 0px solid transparent;
+  border-width: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  position: static;
+  cursor: pointer;
+  }
+  .button > .ld {
+    font-size: initial
+  }
+
+.contenedor thead{
+    background-color: rgba(255, 140, 34, 1);
+    border-radius: 20px;
 }
 
-.search-box button {
-    background-color: #f78d2a;
-    color: rgb(0, 0, 0);
-    padding: 10px;
-    border: none;
-
-    cursor: pointer;
+.contenedor table{
+    border-radius: 20px;
+}
+h1 {
+  color: rgba(255, 140, 34, 1);
+  font-family: cursive;
+  text-align: center;
 }
 
-.container .btn-menu, .logo{
-float: left;
-line-height:100px;
-}
-.container .btn-menu label{
-color: #fff;
-font-size: 25px;
-cursor: pointer;
-}
-
-.container .menu{
-float: right;
-line-height: 100px;
-}
-.container .menu a{
-display: inline-block;
-padding: 15px;
-line-height: normal;
-text-decoration: none;
-color: #fff;
-transition: all 0.3s ease;
-border-bottom: 2px solid transparent;
-font-size: 15px;
-margin-right: 5px;
-}
-.container .menu a:hover{
-border-bottom: 2px solid #c7c7c7;
-padding-bottom: 5px;
-}
+@media (max-width: 767px) {
+    .contenedor{
+        max-width: 80%;
+    }
+  }

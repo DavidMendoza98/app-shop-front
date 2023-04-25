@@ -29,17 +29,17 @@ const router = RouterModule.forChild([
       data:{ permission: 'view_producto' }, 
       component: ProductsComponent
   },
-  {path: 'product/detail', 
+  {path: 'products/detail', 
       canActivate: [AuthGuard],
       data:{ permission: 'view_producto' ,queryParams: ['id']}, 
-      component: ProductsComponent
+      component: ProductDetailComponent
   },
-  {path: 'product/create', 
+  {path: 'products/create', 
       canActivate: [AuthGuard],
       data:{ permission: 'add_producto' ,queryParams: ['id']}, 
       component: CreateProductComponent
   },
-  {path: 'product/update', 
+  {path: 'products/update', 
       canActivate: [AuthGuard],
       data:{ permission: 'change_producto' ,queryParams: ['id']}, 
       component: UpdateProductComponent
