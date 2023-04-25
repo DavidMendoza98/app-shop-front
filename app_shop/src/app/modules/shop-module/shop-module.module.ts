@@ -9,6 +9,8 @@ import { OrderHistoryComponent } from './pages/order-history/order-history.compo
 import { OrderStatusComponent } from './pages/order-status/order-status.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 
+import { SharedModuleModule } from '../shared-module/shared-module.module';
+
 const router = RouterModule.forChild([
   { 
     path: '', 
@@ -53,7 +55,8 @@ const router = RouterModule.forChild([
   ],
   imports: [
     CommonModule,
-    router
+    router,
+    SharedModuleModule
   ]
 })
 export class ShopModuleModule { }

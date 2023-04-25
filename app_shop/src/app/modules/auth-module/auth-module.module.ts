@@ -14,6 +14,7 @@ import { LoadingComponent } from './pages/loading/loading.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { UserUpdateComponent } from './pages/user-update/user-update.component';
+import { FormsModule } from '@angular/forms';
 
 
 const router = RouterModule.forChild([
@@ -55,7 +56,8 @@ const router = RouterModule.forChild([
   imports: [
     CommonModule,
     router,
-    SharedModuleModule
+    SharedModuleModule,
+    FormsModule
   ]
 })
 export class AuthModuleModule { }

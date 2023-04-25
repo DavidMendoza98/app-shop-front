@@ -16,6 +16,8 @@ import { LotDetailComponent } from './pages/lot-detail/lot-detail.component';
 import { CreateLotComponent } from './pages/create-lot/create-lot.component';
 import { UpdateLotComponent } from './pages/update-lot/update-lot.component';
 
+import { SharedModuleModule } from '../shared-module/shared-module.module';
+
 const router = RouterModule.forChild([
   {path: '', 
       canActivate: [AuthGuard],
@@ -27,17 +29,17 @@ const router = RouterModule.forChild([
       data:{ permission: 'view_producto' }, 
       component: ProductsComponent
   },
-  {path: 'product/detail', 
+  {path: 'products/detail', 
       canActivate: [AuthGuard],
       data:{ permission: 'view_producto' ,queryParams: ['id']}, 
-      component: ProductsComponent
+      component: ProductDetailComponent
   },
-  {path: 'product/create', 
+  {path: 'products/create', 
       canActivate: [AuthGuard],
       data:{ permission: 'add_producto' ,queryParams: ['id']}, 
       component: CreateProductComponent
   },
-  {path: 'product/update', 
+  {path: 'products/update', 
       canActivate: [AuthGuard],
       data:{ permission: 'change_producto' ,queryParams: ['id']}, 
       component: UpdateProductComponent
@@ -96,7 +98,8 @@ const router = RouterModule.forChild([
   ],
   imports: [
     CommonModule,
-    router
+    router,
+    SharedModuleModule
   ]
 })
 export class InventoryModuleModule { }
