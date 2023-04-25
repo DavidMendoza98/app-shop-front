@@ -16,6 +16,8 @@ import { LotDetailComponent } from './pages/lot-detail/lot-detail.component';
 import { CreateLotComponent } from './pages/create-lot/create-lot.component';
 import { UpdateLotComponent } from './pages/update-lot/update-lot.component';
 
+import { SharedModuleModule } from '../shared-module/shared-module.module';
+
 const router = RouterModule.forChild([
   {path: '', 
       canActivate: [AuthGuard],
@@ -96,7 +98,8 @@ const router = RouterModule.forChild([
   ],
   imports: [
     CommonModule,
-    router
+    router,
+    SharedModuleModule
   ]
 })
 export class InventoryModuleModule { }
