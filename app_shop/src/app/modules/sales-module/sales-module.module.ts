@@ -32,7 +32,7 @@ const router = RouterModule.forChild([
       data:{ permission: 'isAuthenticated' }, 
       component: ScannerListComponent
   },
-  {path: 'select_client', 
+  {path: 'select/client', 
       canActivate: [AuthGuard],
       data:{ permission: 'isAuthenticated' }, 
       component: SelectClientComponent
