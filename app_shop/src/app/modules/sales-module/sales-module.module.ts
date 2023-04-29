@@ -12,7 +12,7 @@ import { ResumeComponent } from './pages/resume/resume.component';
 import { FinishSaleComponent } from './pages/finish-sale/finish-sale.component';
 
 const router = RouterModule.forChild([
-  {path: '', 
+  {path: 'scanner/options', 
       canActivate: [AuthGuard],
       data:{ permission: 'isAuthenticated' }, 
       component: ScannerOptionsComponent
@@ -32,7 +32,7 @@ const router = RouterModule.forChild([
       data:{ permission: 'isAuthenticated' }, 
       component: ScannerListComponent
   },
-  {path: 'select_client', 
+  {path: 'select/client', 
       canActivate: [AuthGuard],
       data:{ permission: 'isAuthenticated' }, 
       component: SelectClientComponent
