@@ -14,6 +14,8 @@ nav{
   height: 65px;
   width: 100%;
   margin-top: 0px;
+  position: fixed;
+  top:0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,7 +141,6 @@ section{
     background: rgba(255, 255, 255, 1);
     border-radius: 20px;
     width: 400px;
-
 }
 
 .msj{
@@ -149,20 +150,19 @@ section{
     margin-right: 15px;
 }
 
-form .form-control{
-    border-radius: 18px;
+.datos{
+    position: fixed;
+    align-items: start;
+    justify-content: left;
+    left: 40px;
+    top:120px;
 }
 
-
-form .boton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .contenido input{
     width: 300px;
     box-shadow: none;
+   
 }
 
 .button {
@@ -228,8 +228,47 @@ form .boton{
     border-radius: 20px;
 }
 
+.tabla1{
+    margin-top: 50px;
+}
+
+div.boton{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: end;
+    bottom: 40px;
+    right: 20px;
+    z-index: -1111;
+}
+
+.boton button{
+    width: 173px;
+    height: 44px;
+    padding: 0px;
+    font-size: 22px;
+    margin-top: 20px;
+    background-color:rgba(180, 5, 37, 1);
+    border-color: rgba(180, 5, 37, 1);
+    border-radius: 10px;
+    color: #fff;
+}
+
+
 @media (max-width: 767px) {
     .contenedor{
-        max-width: 80%;
+        max-width: 84%;
     }
+    .datos{
+        position:initial;
+        margin-top: 60px;
+        align-items: start;
+        justify-content: left;
+        margin-left: 20px
+    }
+
+    .tabla1{
+        margin-top: 0px;
+    }
+    
   }
