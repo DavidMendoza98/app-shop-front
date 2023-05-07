@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,16 +11,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-
+<app-header [titulo]="'Productos'"></app-header>
 <body>
     <br>
     <br>
     <div class="contenido">
-        <h1>Listado de Productos</h1>
-            <br>
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
-            <div class="button">
+            <input [(ngModel)]="busqueda" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" name="busqueda">
+            <div class="button" [routerLink]="['create']">
 
                 <button><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                         class="bi bi-plus-lg" viewBox="0 0 16 16">
@@ -30,43 +28,58 @@
 
             </div>
         </form>
-        <div class="d-flex">
+        <!-- <div class="d-flex">
             <div class="row">
                 <h2 for="id" class="row col-form-label ">Seleccione una categoria:</h2>
-                <select class="form-control" aria-label="Default select example" name="id">
+                <ng-container >
+                <select class="form-control" aria-label="Default select example" name="id" [(ngModel)]="selectedOption" >
+                    <option value="all" selected>Todas</option>
+                    <option *ngFor="let i of categorias" value="{{i.id}}">{{i.categoria}}</option>
                 </select>
+                 </ng-container>
             </div>
-        </div>
+        </div> -->
 
         <br>
         <div class="contenedor">
 
+            <p-table [value]="productos | filterProduct:busqueda:selectedOption" [tableStyle]="{ 'max-width': '90%' ,'padding':'10px'}" [styleClass]="'p-datatable-sm'">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Categoría</th>
+                        <th>Acción</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>{{ product.nombre }}</td>
+                        <td>{{ product.descripcion }}</td>
+                        <td>{{ product.categoria.categoria }}</td>
+                        <td><a (click)="toDetail(product.id)">Ver</a></td>
+                    </tr>
+                </ng-template>
+            </p-table>
+<!-- 
             <table class="table table-borderless" style="border-radius: 20px;">
                 <thead style="border-radius: 20px;">
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Categoría</th>
                         <th scope="col">Acción</th>
-                        <th scope="col">Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Marka</td>
-                    </tr>
-                    <tr>
-                        <td>Antonio</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Antonia</td>
-                    </tr>
-                    <tr>
-                        <td>Panenca</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Panenco</td>
+                    <tr *ngFor="let j of productos | filterProduct:busqueda:selectedOption">
+                        <td>{{j.nombre}}</td>
+                        <td>{{j.descripcion}}</td>
+                        <td>{{j.categoria.categoria}}</td>
+                        <td><a (click)="toDetail(j.id)">Ver</a></td>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
 
 
 

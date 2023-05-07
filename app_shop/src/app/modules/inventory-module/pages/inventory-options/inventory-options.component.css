@@ -1,16 +1,23 @@
-body {
-    background-color: #FF8C22;
-}
 
-.card {
+
+.boton {
     background-color: white;
-    padding: 30px;
+    width: 130px;
+    height: 130px;
+    gap: 10px;
     border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
     transition: 0.3s;
     display: inline-block;
     margin: 10px;
-    width: 500px;
+    text-align: center;
+    padding: 10px;
+}
+.boton img{
+    width: 80px;
+}
+.boton span{
+    font-size: 15px;
 }
 
 .card:hover {

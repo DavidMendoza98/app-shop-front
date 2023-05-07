@@ -1,1 +1,55 @@
-<p>camera-scanner works!</p>
+<app-header [titulo]="'Escáner'"></app-header>
+<main class="container ">
+    <section class="row m-2">
+        <div class="col-3 d-flex justify-content-start align-items-center">
+        <p-inputSwitch [(ngModel)]="allowCamera"></p-inputSwitch>
+        </div>
+        <div class="col-8 d-flex justify-content-start align-items-center ">
+            <select class="form-select" aria-label="Default select example" [(ngModel)]="currentDevice" >
+                <!-- <option value="" [selected]="!currentDevice">No encontrado</option> -->
+                <ng-container *ngFor="let x of availableDevices">
+                    <option [selected]="!currentDevice" value="{{x.deviceId}}">{{x.label}}</option>
+                </ng-container>
+            </select>
+        </div>
+    </section>
+    <div class="row m-2">
+        <div class="scanner" *ngIf="allowCamera">
+            <zxing-scanner
+                (torchCompatible)="onTorchCompatible($event)"
+                (camerasFound)="onCamerasFound($event)"
+                (camerasNotFound)="camerasNotFoundHandler($event)"
+                (scanSuccess)="scanSuccessHandler($event)"
+                (scanError)="scanErrorHandler($event)"
+                (scanFailure)="scanFailureHandler($event)"
+                (scanComplete)="scanCompleteHandler($event)"
+                [formats]="formatsEnabled"
+            ></zxing-scanner>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2 circle" (click)="clearResult()">
+            <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M99.54 46.2a1.75 1.75 0 0 0 1.75-1.75v-2.678a1.75 1.75 0 0 0-3.5 0v2.675a1.75 1.75 0 0 0 1.75 1.753zM93.605 49.65h2.676a1.75 1.75 0 0 0 0-3.5h-2.676a1.75 1.75 0 0 0 0 3.5zM99.734 49.409a1.75 1.75 0 0 0-1.75 1.75v2.675a1.75 1.75 0 1 0 3.5 0v-2.675a1.75 1.75 0 0 0-1.75-1.75zM102.993 49.456h2.675a1.75 1.75 0 1 0 0-3.5h-2.675a1.75 1.75 0 0 0 0 3.5zM27.039 72.625a1.75 1.75 0 0 0 1.75-1.75V68.2a1.75 1.75 0 0 0-3.5 0v2.675a1.75 1.75 0 0 0 1.75 1.75zM23.78 72.579H21.1a1.75 1.75 0 0 0 0 3.5h2.68a1.75 1.75 0 1 0 0-3.5zM27.233 75.837a1.75 1.75 0 0 0-1.75 1.75v2.675a1.75 1.75 0 0 0 3.5 0v-2.675a1.75 1.75 0 0 0-1.75-1.75zM30.492 75.884h2.675a1.75 1.75 0 0 0 0-3.5h-2.675a1.75 1.75 0 0 0 0 3.5z"/><path d="M82.632 93.116 64.247 73.538V25.267a8.317 8.317 0 1 0-16.634 0v48.271L25.86 96.7a1.751 1.751 0 0 0 .078 2.474 43.518 43.518 0 0 0 13.133 8.482 1.723 1.723 0 0 0 .151.089 1.746 1.746 0 0 0 .35.118 43.987 43.987 0 0 0 16 3.147 1.729 1.729 0 0 0 .721 0 43.686 43.686 0 0 0 29.629-11.834A1.751 1.751 0 0 0 86 96.7zM51.113 25.267a4.817 4.817 0 1 1 9.634 0v47.214H57.68V43.628a1.75 1.75 0 0 0-3.5 0v28.853h-3.067zm21.251 78.767L65.941 90.2a1.75 1.75 0 1 0-3.174 1.474l6.333 13.644a40.492 40.492 0 0 1-11.422 2.168v-7.327a1.75 1.75 0 0 0-3.5 0v7.327a40.483 40.483 0 0 1-11.835-2.308L47.5 94.066a1.75 1.75 0 0 0-3.175-1.474L39.1 103.858a40.017 40.017 0 0 1-9.462-6.064L50.12 75.981h11.62l20.485 21.813a40.012 40.012 0 0 1-9.861 6.24z"/><path d="M55.93 40.4a1.75 1.75 0 0 0 1.75-1.75v-1.085a1.75 1.75 0 0 0-3.5 0v1.081a1.75 1.75 0 0 0 1.75 1.754zM55.93 92.347a1.75 1.75 0 0 0-1.75 1.75v1.081a1.75 1.75 0 0 0 3.5 0V94.1a1.75 1.75 0 0 0-1.75-1.753zM60.215 86.172l.455.98a1.75 1.75 0 0 0 3.175-1.473l-.455-.98a1.75 1.75 0 1 0-3.175 1.473zM49.2 86.243a1.746 1.746 0 0 0-2.324.851l-.455.98a1.75 1.75 0 1 0 3.179 1.472l.455-.98a1.75 1.75 0 0 0-.855-2.323zM96.281 64.123A18.492 18.492 0 0 0 77.81 82.594a1.75 1.75 0 0 0 3.5 0 14.972 14.972 0 1 1 14.971 14.972 1.75 1.75 0 0 0 0 3.5 18.472 18.472 0 0 0 0-36.944zM74.577 66.892a1.749 1.749 0 0 0 0-2.475 4.918 4.918 0 1 1 6.956 0 1.75 1.75 0 1 0 2.475 2.475 8.418 8.418 0 1 0-11.905 0 1.749 1.749 0 0 0 2.474 0z"/></svg>
+        </div>
+        <div class="col-7">
+            <p>Código: {{codigo}}</p>
+        </div>
+       
+    </div>
+    <div class="col-12" *ngIf="product">
+        <span>Producto: {{product.nombre}}</span>
+        <span>Precio: {{lote.precio}}</span>
+    </div>
+    <div class="row mt-2 d-flex justify-content-center align-items-center">
+        <div class="col-2 mx-2">
+            <p-button label="" styleClass="p-button-secondary">X</p-button>
+        </div>
+        <div class="col-8 ms-2">
+            <button pButton pRipple label="Guardar" class="p-button-success"></button>
+        </div>   
+    </div>
+</main>
+
+<!-- [enable]="scannerEnabled"
+    [(device)]="desiredDevice"
+    [torch]="torch" -->

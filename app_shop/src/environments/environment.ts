@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  servidor: "",
-  key:'1234'
+  servidor: "http://127.0.0.1:8000/",
+  key:'1234',
+  token:'4e8e742a57bc567e033bfcc2ccdc3cd7adc42bdd'
 };
 
 /*

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RouterModule } from '@angular/router';
 
+
 import { InventoryOptionsComponent } from './pages/inventory-options/inventory-options.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
@@ -17,10 +18,12 @@ import { CreateLotComponent } from './pages/create-lot/create-lot.component';
 import { UpdateLotComponent } from './pages/update-lot/update-lot.component';
 
 import { SharedModuleModule } from '../shared-module/shared-module.module';
+import { FilterProductPipe } from './pipes/filter-product.pipe';
+import { FilterLotePipe } from './pipes/filter-lote.pipe';
 
 const router = RouterModule.forChild([
   {path: '', 
-      canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
       data:{ permission: 'view_inventario' }, 
       component: InventoryOptionsComponent
   },
@@ -61,7 +64,7 @@ const router = RouterModule.forChild([
   },
   {path: 'lots', 
       canActivate: [AuthGuard],
-      data:{ permission: 'view_lote'}, 
+      data:{ permission: 'view_lote',queryParams: ['id','flag']}, 
       component: LotsComponent
   },
   {path: 'lot/detail', 
@@ -71,12 +74,12 @@ const router = RouterModule.forChild([
   },
   {path: 'lot/create', 
       canActivate: [AuthGuard],
-      data:{ permission: 'add_lote'}, 
+      data:{ permission: 'add_lote',queryParams: ['id']}, 
       component: CreateLotComponent
   },
   {path: 'lot/update', 
       canActivate: [AuthGuard],
-      data:{ permission: 'change_lote',queryParams: ['id']}, 
+      data:{ permission: 'change_lote',queryParams: ['id','idProducto']}, 
       component: UpdateLotComponent
   }
 ]);
@@ -94,7 +97,9 @@ const router = RouterModule.forChild([
     LotsComponent,
     LotDetailComponent,
     CreateLotComponent,
-    UpdateLotComponent
+    UpdateLotComponent,
+    FilterProductPipe,
+    FilterLotePipe
   ],
   imports: [
     CommonModule,

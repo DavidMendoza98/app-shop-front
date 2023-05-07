@@ -1,1 +1,46 @@
-<p>update-lot works!</p>
+<app-header></app-header>
+
+<body>
+    <div>
+
+
+        <br>
+        <br>
+
+
+        <div class="contenido">
+            <h1>Actualizar Lote para</h1>
+            <span> {{producto.nombre}}</span>
+            <br>
+            <div class="contenedor">
+                <form class="row g-3" #Form = 'ngForm' (submit)="update(Form.value)">
+                    <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">Cantidad:</label>
+                        <input type="text" class="form-control" id="inputName" name="cantidad" ngModel [(ngModel)]="lote.cantidad">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Precio:</label>
+                        <input type="text" class="form-control" id="inputCode" name="precio" ngModel [(ngModel)]="lote.precio">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputPassword4" class="form-label">Fecha de Vencimiento:</label>
+                        <input type="date" class="form-control" id="inputPrice" name="fecha" ngModel [(ngModel)]="lote.fecha">
+                    </div>
+                    <div class="col-12 boton">
+                        <button type="submit" class="btn">Actualizar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</body>

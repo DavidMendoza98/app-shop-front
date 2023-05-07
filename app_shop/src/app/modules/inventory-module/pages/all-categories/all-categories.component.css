@@ -238,3 +238,26 @@ h1 {
         max-width: 80%;
     }
   }
+
+  form .boton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton button{
+    width: 201px;
+    height: 44px;
+    padding: 0px;
+    font-size: 22px;
+    margin-top: 20px;
+    background-color: rgba(255, 140, 34, 1);
+    border-color: rgba(255, 140, 34, 1);
+    border-radius: 10px;
+    color: #fff;
+}
+.volver{
+  min-width: 80px;
+  min-height: 40px;
+  margin-top: 30px;
+}

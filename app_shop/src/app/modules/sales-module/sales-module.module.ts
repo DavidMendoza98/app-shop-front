@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RouterModule } from '@angular/router';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import { CameraScannerComponent } from './pages/camera-scanner/camera-scanner.component';
 import { InputScannerComponent } from './pages/input-scanner/input-scanner.component';
@@ -10,6 +12,7 @@ import { ScannerListComponent } from './pages/scanner-list/scanner-list.componen
 import { SelectClientComponent } from './pages/select-client/select-client.component';
 import { ResumeComponent } from './pages/resume/resume.component';
 import { FinishSaleComponent } from './pages/finish-sale/finish-sale.component';
+
 
 const router = RouterModule.forChild([
   {path: 'scanner/options', 
@@ -61,7 +64,9 @@ const router = RouterModule.forChild([
   ],
   imports: [
     CommonModule,
-    router
+    router,
+    SharedModuleModule,
+    ZXingScannerModule
   ]
 })
 export class SalesModuleModule { }

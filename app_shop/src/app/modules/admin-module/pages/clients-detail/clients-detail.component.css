@@ -236,7 +236,7 @@ div.boton{
     display: flex;
     position: fixed;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     bottom: 40px;
     right: 20px;
     z-index: -1111;

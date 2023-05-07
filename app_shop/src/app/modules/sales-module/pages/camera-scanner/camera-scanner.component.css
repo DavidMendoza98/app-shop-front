@@ -1,0 +1,29 @@
+.scanner{
+    border: 1px solid grey;
+    border-radius: 10px;
+    max-width: 600px;
+}
+main{
+    max-width: 300px;
+    background-color: rgb(39, 39, 39);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+.circle{
+    background-color: rgb(1, 199, 199);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    
+}
+.circle svg{
+    width: 35px;
+    transform: translateX(-12px);
+}
+.circle:hover{
+    background-color: cyan;
+    transform: scale(1.1);
+}

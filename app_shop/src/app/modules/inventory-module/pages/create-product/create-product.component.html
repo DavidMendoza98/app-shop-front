@@ -23,27 +23,27 @@
             <h1>Crear Producto</h1>
             <br>
             <div class="contenedor">
-                <form class="row g-3">
+                <form class="row g-3" #createForm = "ngForm" (ngSubmit)="crear(createForm.value)">
                     <div class="col-md-12">
                       <label for="inputEmail4" class="form-label">Nombre:</label>
-                      <input type="text" class="form-control" id="inputName" >
+                      <input type="text" class="form-control" id="nombre" name="nombre" ngModel>
                     </div>
                     <div class="col-12">
-                      <label for="inputAddress" class="form-label">Descripció:</label>
-                      <input type="text" class="form-control" id="inputDescription">
+                      <label for="inputAddress" class="form-label">Descripción:</label>
+                      <input type="text" class="form-control" id="descripcion" name="descripcion" ngModel>
                     </div>
                     <div class="col-12">
                       <label for="inputAddress2" class="form-label">Codigo:</label>
-                      <input type="text" class="form-control" id="inputCode" >
+                      <input type="text" class="form-control" id="codigo" name="codigo" ngModel>
                     </div>
-                    <div class="col-md-12">
-                      <label for="inputPassword4" class="form-label">Imagen:</label>
-                      <input type="image" class="form-control" id="inputImage">
-                    </div>
+                    
                     <div class="col-md-12">
                       <label for="inputPassword4" class="form-label">categoria:</label>
-                      <select class="form-control" aria-label="Default select example" name="id">
-                    </select>
+                      <ng-container >
+                        <select class="form-control" aria-label="Default select example" name="id" [(ngModel)]="selectedOption" >
+                            <option *ngFor="let i of categorias" value="{{i.id}}">{{i.categoria}}</option>
+                        </select>
+                         </ng-container>
                     </div>
                     <div class="col-12 boton">
                         <button type="submit" class="btn">Crear 

@@ -13,42 +13,38 @@
 </head>
 
 <body class="justify-content-center pt-5">
-    <div class="container d-flex align-items-center justify-content-center ">
-        <div class="col-12 ">
-            <h1>Inventario</h1>
-            <div class="card">
-                <h2>Escanner</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
+    <div class="container d-flex align-items-center justify-content-center flex-wrap">
 
-            <div class="card">
-                <h2>Lotes</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
-
-            <div class="card">
-                <h2>Lista de categorias</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
-            <div class="card">
-                <h2>categorias</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
-            <div class="card">
-                <h2>A punto de Vencer</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
-            <div class="card">
-                <h2>Poco Inventario</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec mauris mauris. Aliquam erat
-                    volutpat. </p>
-            </div>
+        <div [routerLink]="['../sales/scanner/options']" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/escaner.png" alt="escaner">
+            <span class=" mb-2">Escáner</span>
         </div>
+
+        <div [routerLink]="['lots']" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/lotes.png" alt="escaner">
+            <span class=" mb-2">Lotes</span>
+        </div>
+
+        <div [routerLink]="['products']" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/Inventory.png" alt="escaner">
+            <span class=" mb-2">Productos</span>
+        </div>
+
+        <div [routerLink]="['categories']" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/Categories.png" alt="escaner">
+            <span class=" mb-2">Categorías</span>
+        </div>
+
+        <div  (click)="toVencer()" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/vencer.png" alt="escaner">
+            <span class=" mb-2">Pronto a vencer</span>
+        </div>
+
+        <div (click)="toPoco()" class="boton d-flex align-items-center justify-content-center flex-wrap">
+            <img src="../../../../../assets/img/bajo_inventario.png" alt="escaner">
+            <span class=" mb-2">Poco inventario</span>
+        </div>
+        
     </div>
 
 

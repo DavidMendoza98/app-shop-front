@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from 'src/app/global/global-components/header/header.component';
 
 import {DropdownModule} from 'primeng/dropdown';
@@ -27,6 +28,7 @@ import { PasswordModule } from 'primeng/password';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [],
@@ -56,7 +58,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     MultiSelectModule,
     KeyFilterModule,
     InputNumberModule,
-    HeaderComponent
+    HeaderComponent,
+    InputSwitchModule
 
   ],
   exports:[
@@ -85,7 +88,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
     MultiSelectModule,
     KeyFilterModule,
     InputNumberModule,
-    HeaderComponent
+    HeaderComponent,
+    FormsModule,
+    InputSwitchModule
   ]
 })
 export class SharedModuleModule { }

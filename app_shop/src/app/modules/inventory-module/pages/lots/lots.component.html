@@ -1,1 +1,78 @@
-<p>lots works!</p>
+<app-header [titulo]="title"></app-header>
+<body>
+    <br>
+    <br>
+    <div class="contenido">
+        <form class="d-flex">
+            <input [(ngModel)]="busqueda" class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search" name="busqueda">
+            <!-- <div class="button" [routerLink]="['../lot/create']">
+
+                <button><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                        class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                    </svg></button>
+
+            </div> -->
+        </form>
+        <!-- <div class="d-flex">
+            <div class="row">
+                <h2 for="id" class="row col-form-label ">Seleccione una categoria:</h2>
+                <ng-container >
+                <select class="form-control" aria-label="Default select example" name="id" [(ngModel)]="selectedOption" >
+                    <option value="all" selected>Todas</option>
+                    <option *ngFor="let i of categorias" value="{{i.id}}">{{i.categoria}}</option>
+                </select>
+                 </ng-container>
+            </div>
+        </div> -->
+
+        <br>
+        <div class="contenedor">
+
+            <div class="tabla">
+                <p-table [value]="lotes | filterLote:busqueda:selectedOption" [tableStyle]="{ 'max-width': '90%' ,'padding':'10px'}" [styleClass]="'p-datatable-sm'">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Vencimiento</th>
+                            <th>Acción</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{ product.producto.nombre}}</td>
+                            <td>{{ product.cantidad }}</td>
+                            <td>{{ product.fecha_vencimiento | date: 'MMM dd, yyyy'}}</td>
+                            <td><a (click)="toUpdate(product.id,product.producto.id)">Editar </a>| <a (click)="toDelete(product.id)" class="text-danger">Eliminar</a></td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+<!-- 
+            <table class="table table-borderless" style="border-radius: 20px;">
+                <thead style="border-radius: 20px;">
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let j of productos | filterProduct:busqueda:selectedOption">
+                        <td>{{j.nombre}}</td>
+                        <td>{{j.descripcion}}</td>
+                        <td>{{j.categoria.categoria}}</td>
+                        <td><a (click)="toDetail(j.id)">Ver</a></td>
+                    </tr>
+                </tbody>
+            </table> -->
+
+
+
+        </div>
+
+    </div>
+</body>

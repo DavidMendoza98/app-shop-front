@@ -7,7 +7,7 @@
         </a>
     </div>
     <div class="logotipo">
-        <span class="mx-2">Alessia Shop</span>
+        <span class="mx-2">{{titulo}}</span>
     </div>
     <div class="dropdown">
         <div class="btn-group">
@@ -24,7 +24,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+                <li><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
             </ul>
         </div>
     </div>

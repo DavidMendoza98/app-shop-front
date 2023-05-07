@@ -1,24 +1,13 @@
-<app-header></app-header>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alessia Shop</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-</head>
-
-<body>
+<app-header [titulo]="'Categorias'"></app-header>
+<body *ngIf="view==='all'" >
     <br>
     <br>
     <div class="contenido">
-        <h1>Categorias</h1>
-            <br>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Buscar por nombre" aria-label="Search">
             <div class="button">
 
@@ -29,41 +18,28 @@
                     </svg></button>
 
             </div>
-        </form>
-        <div class="d-flex">
-            <div class="row">
-                <h2 for="id" class="row col-form-label ">Seleccione una categoria:</h2>
-                <select class="form-control" aria-label="Default select example" name="id">
-                </select>
-            </div>
+        </form> -->
+        <div class="boton">
+            <button (click)="toCreate()" >Agregar<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+            </svg></button>
         </div>
-
         <br>
         <div class="contenedor">
 
             <table class="table table-borderless" style="border-radius: 20px;">
                 <thead style="border-radius: 20px;">
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Categoria</th>
                         <th scope="col">Acción</th>
-                        <th scope="col">Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Mark</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Marka</td>
-                    </tr>
-                    <tr>
-                        <td>Antonio</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Antonia</td>
-                    </tr>
-                    <tr>
-                        <td>Panenca</td>
-                        <td><a href="">Ver</a></td>
-                        <td>Panenco</td>
+                    <tr *ngFor="let s of categorias">
+                        <td>{{s.categoria}}</td>
+                        <td><a (click)="toUpdate(s)">Editar</a> | <a (click)="toDelete(s.id)">Eliminar</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -74,5 +50,45 @@
 
     </div>
 </body>
+<section *ngIf="view==='create'">
+    <div class="contenedor m-4 ">
+        <form class="row g-3" #createForm = "ngForm" (ngSubmit)="crear(createForm.value)">
+            <div class="col-md-12">
+              <label for="inputEmail4" class="form-label">Categoría:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" ngModel>
+            </div>
+            <div class="col-4">
+                <div class="btn btn-secondary volver" (click)="toList()">Volver</div>
+            </div>
+            <div class="col-8 boton">
+                <button type="submit" class="btn">Crear 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                      </svg>
+                </button>
+            </div>
+          </form>
+    </div>
+</section>
+<section *ngIf="view==='update'">
+    <div class="contenedor m-4 ">
+        <form class="row g-3" #createForm = "ngForm" (ngSubmit)="actualizar(createForm.value)">
+            <div class="col-md-12">
+              <label for="inputEmail4" class="form-label">Categoría:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="categoria.categoria" ngModel>
+            </div>
+            <div class="col-4">
+                <div class="btn btn-secondary volver" (click)="toList()">Volver</div>
+            </div>
+            <div class="col-8 boton">
+                <button type="submit" class="btn">Editar 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                      </svg>
+                </button>
+            </div>
+          </form>
+    </div>
+</section>
 
 </html>

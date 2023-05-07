@@ -11,18 +11,24 @@ export class Storage{
     create_storage(name_data:string, content_data:string){
         const key = environment.key;
         const data = CryptoJS.AES.encrypt(content_data, key).toString();
-        const name = CryptoJS.AES.encrypt(content_data, name_data).toString();
-        localStorage.setItem(name,data);
+        //const name = CryptoJS.AES.encrypt(content_data, name_data).toString();
+        localStorage.setItem(name_data,data);
     }
     get_storage(name_data:string){
         const key = environment.key;
         const data = localStorage.getItem(name_data);
+        //console.log(data);
         if(data ===null){
             return JSON.parse( data || '{}');
         }else{
             const bytes = CryptoJS.AES.decrypt(<string>data, key);
             const decrypted = bytes.toString(CryptoJS.enc.Utf8); 
-            return JSON.parse( decrypted || '{}');
+            try{
+                return JSON.parse( decrypted || '{}');
+            } catch{
+                return decrypted;
+            }
+            
         }
         
         
@@ -32,6 +38,10 @@ export class Storage{
         const key = environment.key;
         const data = CryptoJS.AES.encrypt(name_data, key).toString();
         localStorage.removeItem(data)
+    }
+
+    clear(){
+        localStorage.clear()
     }
     
 }

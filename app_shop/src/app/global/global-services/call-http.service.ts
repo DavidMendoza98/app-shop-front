@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CallHttpService {
   private user = this.storage.get_storage('user');
-  private token = this.user.token;
+  private token = '4e8e742a57bc567e033bfcc2ccdc3cd7adc42bdd'//this.user.token;
   private api = environment.servidor;
 
   constructor(private http: HttpClient, private storage:Storage, private router:Router) { } //,private notification: NzNotificationService) { }
@@ -21,10 +21,10 @@ export class CallHttpService {
       'Authorization': "Token "+this.token
     };
 
-    var response = this.http.get<T>(get_url,{headers:Headers})
-      .pipe(catchError(this.handleError()));
+    return this.http.get<T>(get_url,{headers:Headers})
+      //.pipe(catchError(this.handleError()));
 
-      return response;
+      //return response;
   }
 
   httpPost<T>(url: string, contentBody: any = {}): Observable<T> {   
